@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bibliographieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Auteur">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ville" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Livres" Relationship="Self.Ecrire" FromRole="Auteur" ToRole="Livre" />
+  </EntityType>
+  <EntityType Name="Editeur">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Livres" Relationship="Self.FK__Livre__IdEditeur__3B75D760" FromRole="Editeur" ToRole="Livre" />
+  </EntityType>
+  <EntityType Name="Livre">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Annee" Type="Int32" Nullable="false" />
+    <Property Name="IdEditeur" Type="Int32" />
+    <NavigationProperty Name="Editeur" Relationship="Self.FK__Livre__IdEditeur__3B75D760" FromRole="Livre" ToRole="Editeur" />
+    <NavigationProperty Name="Auteurs" Relationship="Self.Ecrire" FromRole="Livre" ToRole="Auteur" />
+  </EntityType>
+  <EntityType Name="VueLivre">
+    <Key>
+      <PropertyRef Name="Id_Livre" />
+      <PropertyRef Name="Titre_Livre" />
+      <PropertyRef Name="Annee_sortie" />
+    </Key>
+    <Property Name="Id_Livre" Type="Int32" Nullable="false" />
+    <Property Name="Titre_Livre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Annee_sortie" Type="Int32" Nullable="false" />
+    <Property Name="Editeur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Livre__IdEditeur__3B75D760">
+    <End Role="Editeur" Type="Self.Editeur" Multiplicity="0..1" />
+    <End Role="Livre" Type="Self.Livre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Editeur">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Livre">
+        <PropertyRef Name="IdEditeur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Ecrire">
+    <End Role="Auteur" Type="Self.Auteur" Multiplicity="*" />
+    <End Role="Livre" Type="Self.Livre" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="bibliographieEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Auteurs" EntityType="Self.Auteur" />
+    <EntitySet Name="Editeurs" EntityType="Self.Editeur" />
+    <EntitySet Name="Livres" EntityType="Self.Livre" />
+    <EntitySet Name="VueLivres" EntityType="Self.VueLivre" />
+    <AssociationSet Name="FK__Livre__IdEditeur__3B75D760" Association="Self.FK__Livre__IdEditeur__3B75D760">
+      <End Role="Editeur" EntitySet="Editeurs" />
+      <End Role="Livre" EntitySet="Livres" />
+    </AssociationSet>
+    <AssociationSet Name="Ecrire" Association="Self.Ecrire">
+      <End Role="Auteur" EntitySet="Auteurs" />
+      <End Role="Livre" EntitySet="Livres" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

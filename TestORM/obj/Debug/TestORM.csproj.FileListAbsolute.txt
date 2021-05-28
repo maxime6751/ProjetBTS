@@ -1,0 +1,15 @@
+F:\Visual Studio\TestORM\bin\Debug\TestORM.exe.config
+F:\Visual Studio\TestORM\bin\Debug\TestORM.exe
+F:\Visual Studio\TestORM\bin\Debug\TestORM.pdb
+F:\Visual Studio\TestORM\bin\Debug\EntityFramework.dll
+F:\Visual Studio\TestORM\bin\Debug\EntityFramework.SqlServer.dll
+F:\Visual Studio\TestORM\bin\Debug\EntityFramework.xml
+F:\Visual Studio\TestORM\bin\Debug\EntityFramework.SqlServer.xml
+F:\Visual Studio\TestORM\bin\Debug\fr\EntityFramework.resources.dll
+F:\Visual Studio\TestORM\obj\Debug\TestORM.csprojAssemblyReference.cache
+F:\Visual Studio\TestORM\obj\Debug\TestORM.Properties.Resources.resources
+F:\Visual Studio\TestORM\obj\Debug\TestORM.csproj.GenerateResource.cache
+F:\Visual Studio\TestORM\obj\Debug\TestORM.csproj.CopyComplete
+F:\Visual Studio\TestORM\obj\Debug\TestORM.exe
+F:\Visual Studio\TestORM\obj\Debug\TestORM.pdb
+F:\Visual Studio\TestORM\obj\Debug\TestORM.Form1.resources

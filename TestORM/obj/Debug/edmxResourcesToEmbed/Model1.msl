@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bibliographieModelStoreContainer" CdmEntityContainer="bibliographieEntities">
+    <EntitySetMapping Name="Auteurs">
+      <EntityTypeMapping TypeName="bibliographieModel.Auteur">
+        <MappingFragment StoreEntitySet="Auteur">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="ville" ColumnName="ville" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Editeurs">
+      <EntityTypeMapping TypeName="bibliographieModel.Editeur">
+        <MappingFragment StoreEntitySet="Editeur">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Livres">
+      <EntityTypeMapping TypeName="bibliographieModel.Livre">
+        <MappingFragment StoreEntitySet="Livre">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="Annee" ColumnName="Annee" />
+          <ScalarProperty Name="IdEditeur" ColumnName="IdEditeur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VueLivres">
+      <EntityTypeMapping TypeName="bibliographieModel.VueLivre">
+        <MappingFragment StoreEntitySet="VueLivres">
+          <ScalarProperty Name="Id_Livre" ColumnName="Id Livre" />
+          <ScalarProperty Name="Titre_Livre" ColumnName="Titre Livre" />
+          <ScalarProperty Name="Annee_sortie" ColumnName="Annee sortie" />
+          <ScalarProperty Name="Editeur" ColumnName="Editeur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Ecrire" TypeName="bibliographieModel.Ecrire" StoreEntitySet="Ecrire">
+      <EndProperty Name="Auteur">
+        <ScalarProperty Name="Id" ColumnName="IdAuteur" />
+      </EndProperty>
+      <EndProperty Name="Livre">
+        <ScalarProperty Name="Id" ColumnName="IdLivre" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
